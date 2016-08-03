@@ -27,7 +27,7 @@ uwsgi:
 	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
 
 celery:
-	source ./env/bin/activate && python src/manage.py celeryd --uid=99 --gid=99 -l INFO -B
+	source ./env/bin/activate && celery --workdir=src -A project worker -l debug
 
 celery-help:
 	source ./env/bin/activate && python src/manage.py celeryd --help

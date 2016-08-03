@@ -1,17 +1,5 @@
-Django>=1.8,<1.9
+Django
 iptools
 hashids
 uwsgi
-#django-ratelimit-backend
-#django-treebeard
-#python-slugify
-#Django-Select2
-#django-ckeditor
-#Pygments
-#django-imagekit
-#django-tagging
-#django-taggit
 
-
-#MySQL-python
-#psycopg2

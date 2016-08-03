@@ -67,7 +67,7 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'project.wsgi.application'
-
+BROKER_URL = 'redis://localhost:6379/5'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -104,47 +104,6 @@ MEDIA_ROOT = os.path.join(VAR_DIR, 'media')
 MEDIA_URL = '/media/'
 
 if os.path.isfile(os.path.join(BASE_DIR, 'project/__settings.py')):
-    from __settings import *
+    from .__settings import *
 
-# Configure Caching
-# -----------------------------------------------------------------------------------
-if DEBUG is True:
-    MIDDLEWARE_CLASSES += (
-        'project.middleware.HostCheck',
-        'project.middleware.IPCheck',
-    )
-
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-        }
-    }
-
-    TEMPLATES = [
-        {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
-            # 'APP_DIRS': True,
-            'OPTIONS': {
-                'context_processors': [
-                    'django.template.context_processors.debug',
-                    'django.template.context_processors.request',
-                    'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
-                ],
-                'loaders': [
-                    'django.template.loaders.app_directories.Loader',
-                    'django.template.loaders.eggs.Loader',
-                ],
-            },
-        },
-    ]
-
-else:
-
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-            'LOCATION': 'unique-snowflake',
-        }
-    }
+MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE
