@@ -18,8 +18,9 @@ sitemaps = {
 }
 
 urlpatterns = [
-     url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
+    url(r'example/', include('apps.example.urls')),
     url(r'^$', views.index_page, name="index_page"),
 
     url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),

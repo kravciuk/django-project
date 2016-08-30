@@ -2,4 +2,4 @@ Django
 iptools
 hashids
 uwsgi
-
+uwsgi_tasks
