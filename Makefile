@@ -27,10 +27,10 @@ uwsgi:
 	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
 
 celery:
-	source ./env/bin/activate && celery --workdir=src -A project worker -l debug
+	source ./env/bin/activate && celery --workdir=src -A project worker -l debug -C
 
-celery-help:
-	source ./env/bin/activate && python src/manage.py celeryd --help
+flower:
+	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 reload:
 	source ./env/bin/activate && uwsgi --reload var/uwsgi.pid
