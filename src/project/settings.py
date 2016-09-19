@@ -3,7 +3,7 @@ import os
 import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VAR_DIR = os.path.normpath(os.path.join(BASE_DIR, '../'))
+VAR_DIR = os.path.normpath(os.path.join(BASE_DIR, '../var'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
@@ -100,10 +100,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = os.path.join(VAR_DIR, 'static')
+STATIC_ROOT = os.path.join(VAR_DIR, 'htdocs/static')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(VAR_DIR, 'media')
+MEDIA_ROOT = os.path.join(VAR_DIR, 'htdocs/media')
 MEDIA_URL = '/media/'
 
 # Configure logging
