@@ -5,3 +5,4 @@ uwsgi
 uwsgi_tasks
 colorlog
 dateutils
+django-sendfile
