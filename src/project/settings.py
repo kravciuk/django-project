@@ -68,9 +68,7 @@ TEMPLATES = [
     },
 ]
 
-
-WSGI_APPLICATION = 'project.wsgi.application'
-BROKER_URL = 'redis://localhost:6379/5'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -87,13 +85,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Europe/Vilnius'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -132,6 +126,17 @@ LOGGING = {
             '(%(asctime)s; %(filename)s:%(lineno)d)',
             'datefmt': "%Y-%m-%d %H:%M:%S",
         },
+        'color': {
+            '()': 'colorlog.ColoredFormatter',
+            'format': '%(log_color)s%(levelname)-8s %(message)s (%(filename)s:%(lineno)d)',
+            'log_colors': {
+                'DEBUG':    'cyan',
+                'INFO':     'white',
+                'WARNING':  'yellow',
+                'ERROR':    'red',
+                'CRITICAL': 'red,bg_white',
+            },
+        },
     },
     'handlers': {
         'null': {
@@ -141,7 +146,7 @@ LOGGING = {
             'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
+            'formatter': 'color',
         },
         'mail_admins': {
             'level': 'ERROR',

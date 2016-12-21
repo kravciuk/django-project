@@ -3,3 +3,5 @@ iptools
 hashids
 uwsgi
 uwsgi_tasks
+colorlog
+dateutils
