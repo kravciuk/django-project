@@ -6,3 +6,8 @@ uwsgi_tasks
 colorlog
 dateutils
 django-sendfile
+django_compressor
+django-dbbackup
+django-xsendfile
+django-rosetta
+django-braces
