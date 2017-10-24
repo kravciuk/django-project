@@ -7,7 +7,7 @@ install: var requirements syncdb
 up: pull migrate static
 
 var:
-	mkdir -p var var/htdocs/static var/spooler var/htdocs/media var/htdocs/protected var/logs;
+	mkdir -p var var/htdocs/static var/spooler var/htdocs/media var/htdocs/protected var/logs var/backup;
 
 config:
 	cp etc/nginx.example.conf etc/nginx.conf;

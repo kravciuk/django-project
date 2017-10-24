@@ -1,7 +1,7 @@
 .idea
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
+*.py[code]
 
 # C extensions
 *.so
@@ -56,9 +56,8 @@ docs/_build/
 etc/nginx.conf
 etc/supervisor.conf
 etc/uwsgi.ini
-local.py
-/src/etc/nginx.conf
-/src/etc/supervisor.ini
-/src/etc/uwsgi.ini
-/src/settings.py
-/src/project/__settings.py
+src/etc/nginx.conf
+src/etc/supervisor.ini
+src/etc/uwsgi.ini
+src/project/__settings.py
+src/project/settings/local*
