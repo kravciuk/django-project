@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-import glob
+import importlib
+import re
 
 BASE_DIR = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../'))
 VAR_DIR = os.path.normpath(os.path.join(BASE_DIR, '../var'))
@@ -69,7 +70,11 @@ from .templates import *
 LOCAL_MIDDLEWARE = ()
 LOCAL_APPS = ()
 
-from .local import *
+rs = os.listdir(os.path.join(BASE_DIR, 'project/settings'))
+for file_name in rs:
+    match = re.search(r"local_(.*).py$", file_name, re.MULTILINE)
+    if match:
+        globals().update(importlib.import_module('project.settings.%s'%file_name[:-3]).__dict__)
 
 MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE
 INSTALLED_APPS += LOCAL_APPS
