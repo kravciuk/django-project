@@ -1,10 +1,20 @@
+{% load sekizai_tags staticfiles vcms_tags sitetree %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{{ title }}{% endblock %}</title>
+<script src="/static/jquery/jquery-2.1.4.min.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+
+{% render_block "js" %}
+{% render_block "css" %}
 </head>
 <body>
+
+<div>{% sitetree_menu from 'top_menu'  include "trunk,topmenu" %}</div>
+
 {% block content %}{% endblock %}
+{% vcms_admin %}
 </body>
 </html>

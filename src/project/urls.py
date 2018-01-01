@@ -18,14 +18,19 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^rosetta/', include('rosetta.urls')),
+    url(r'^su/', admin.site.urls),
 
-    url(r'example/', include('apps.example.urls')),
+    # url(r'example/', include('apps.example.urls')),
     url(r'^$', views.index_page, name="index_page"),
 
     url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps}),
+    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^select2/', include('django_select2.urls')),
+
+    url(r'^share/', include('vcms.share.urls')),
+    url(r'^content/', include('vcms.content.urls')),
 ]
 
 urlpatterns += i18n_patterns(

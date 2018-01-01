@@ -60,4 +60,4 @@ src/etc/nginx.conf
 src/etc/supervisor.ini
 src/etc/uwsgi.ini
 src/project/__settings.py
-src/project/settings/local*
+src/project/settings/local/*.py

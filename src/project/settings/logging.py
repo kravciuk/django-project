@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
+import colorlog
+
 # Configure logging
 # -----------------------------------------------------------------------------------
 LOGGING = {
@@ -49,11 +51,6 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'color',
         },
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
         'error': {
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
@@ -67,16 +64,6 @@ LOGGING = {
         'django.db': {
             'handlers': ['null'],
             'level': 'DEBUG',
-            'propagate': False,
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        '': {
-            'handlers': ['console'],
-            'level': 'ERROR',
             'propagate': False,
         },
         '': {

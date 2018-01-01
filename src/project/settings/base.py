@@ -26,23 +26,33 @@ INSTALLED_APPS = (
 
     'compressor',
     'dbbackup',
-    'rosetta',
-    'django_extensions',
+    'taggit',
+    'taggit_autosuggest',
+    'treebeard',
+    'sitetree',
+    'crispy_forms',
+    'sekizai',
+
+    'ckeditor',
+    'ckeditor_uploader',
+
+    'vcms',
+    'vcms.content',
+    'vcms.share',
 
     'project',
     'example',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE  = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-)
+]
 
 ROOT_URLCONF = 'project.urls'
 
@@ -66,16 +76,17 @@ from .database import *
 from .regional import *
 from .additional import *
 from .templates import *
+from .vcms import *
 
 LOCAL_MIDDLEWARE = ()
 LOCAL_APPS = ()
 
-rs = os.listdir(os.path.join(BASE_DIR, 'project/settings'))
+rs = os.listdir(os.path.join(BASE_DIR, 'project/settings/local'))
 for file_name in rs:
-    match = re.search(r"local_(.*).py$", file_name, re.MULTILINE)
+    match = re.search(r"(.*).py$", file_name, re.MULTILINE)
     if match:
-        globals().update(importlib.import_module('project.settings.%s'%file_name[:-3]).__dict__)
+        globals().update(importlib.import_module('project.settings.local.%s'%file_name[:-3]).__dict__)
 
-MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE
+MIDDLEWARE += LOCAL_MIDDLEWARE
 INSTALLED_APPS += LOCAL_APPS
 

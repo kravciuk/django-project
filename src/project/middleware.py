@@ -21,13 +21,19 @@ def get_ip(request):
     return ip
 
 
-class HostCheck(object):
-    def process_request(self, request):
+class HostCheck():
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
         hostname = request.get_host()
         if hostname not in settings.ALLOWED_HOSTS:
             remote_addr = get_ip(request)
             logging.error('Access denied by hostname [%s] for ip %s.' % (hostname, (', '.join(remote_addr))))
             raise PermissionDenied()
+
+        response = self.get_response(request)
+        return response
 
 
 class IPCheck(object):
