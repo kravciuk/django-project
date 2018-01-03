@@ -1,7 +1,13 @@
 {% extends "base.html" %}
+{% load vcms_tags %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    {{ text }}
+    {% vcms_pages category=index as pages %}
+    <div class="row">
+        {% for page in pages %}
+            <a href="{% url 'content_page' page.url %}">{{ page.title }}</a>
+        {% endfor %}
+    </div>
 {% endblock %}
