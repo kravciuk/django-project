@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
+import os
 from django.utils.translation import ugettext_lazy as _
+
+from .base import MEDIA_ROOT
 
 
 VCMS_SHARE_UPLOADED_DIR = 'share'
@@ -44,3 +47,8 @@ CKEDITOR_CONFIGS = {
     ],
     },
 }
+
+SENDFILE_BACKEND = 'vu.sendfile.backends.nginx'
+SENDFILE_ROOT = os.path.join(MEDIA_ROOT, 'share')
+SENDFILE_URL = '/media/share'
+

@@ -2,6 +2,7 @@
 __author__ = 'Vadim Kravciuk'
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseForbidden
 import iptools
 import logging
 
@@ -30,7 +31,7 @@ class HostCheck():
         if hostname not in settings.ALLOWED_HOSTS:
             remote_addr = get_ip(request)
             logging.error('Access denied by hostname [%s] for ip %s.' % (hostname, (', '.join(remote_addr))))
-            raise PermissionDenied()
+            return HttpResponseForbidden()
 
         response = self.get_response(request)
         return response

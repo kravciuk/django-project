@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = '=75dq8^7#rj%s#d#n^!9uer=s0hfvyd+d&knbn!2q5y2y28uh6'
 
 SITE_ID = 1
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 ALLOWED_IPS = ['127.0.0.1', '192.168/16']
@@ -35,10 +35,13 @@ INSTALLED_APPS = (
 
     'ckeditor',
     'ckeditor_uploader',
+    'embed_video',
+    'vu.sendfile',
 
     'vcms',
     'vcms.content',
     'vcms.share',
+    'vcms.comments',
 
     'project',
     'example',
