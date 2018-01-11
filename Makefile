@@ -3,8 +3,8 @@ CURRENT_DIR = $(shell pwd)
 
 all: ;@echo 'Run with option (install, run, syncdb, etc...)'
 
-install: var requirements syncdb
-up: pull migrate static
+install: var requirements migrate
+up: pull migrate static reload
 
 var:
 	mkdir -p var var/htdocs/static var/spooler var/htdocs/media var/htdocs/protected var/logs var/backup;
@@ -17,26 +17,29 @@ config:
 requirements:
 	source ./env/bin/activate && pip install -r requirements.txt;
 
-run:
-	source ./env/bin/activate && python src/manage.py runserver 127.0.0.1:8000;
-
 pull:
 	git pull;
 
+run:
+	source ./env/bin/activate && python src/manage.py runserver 127.0.0.1:8000;
+
+urun:
+	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
+
 uwsgi:
 	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
-
-celery:
-	source ./env/bin/activate && celery --workdir=src -A project worker -l debug -C
-
-flower:
-	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 reload:
 	source ./env/bin/activate && uwsgi --reload var/uwsgi.pid
 
 kill:
 	kill -9 `cat var/uwsgi.pid`
+
+celery:
+	source ./env/bin/activate && celery --workdir=src -A project worker -l debug -C
+
+flower:
+	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 syncdb:
 	source ./env/bin/activate && python src/manage.py syncdb;
