@@ -22,3 +22,10 @@ rjsmin==1.0.12
 six==1.11.0
 uWSGI==2.0.15
 uwsgi-tasks==0.6.4
+django-crispy-forms==1.7.0
+django_sekizai==0.10.0
+django-embed-video
+django_select2==6.0.1
+django_imagekit==4.0.2
+Pygments==2.2.0
+lxml==4.1.1

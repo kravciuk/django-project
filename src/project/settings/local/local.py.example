@@ -2,12 +2,11 @@
 __author__ = 'Vadim Kravciuk'
 
 import os
-from settings import VAR_DIR
 
 SECRET_KEY = 'bvhaviahivGbkjsf(jbkjggygsf0983535'
 
 DEBUG = True
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*', 'dev.localhost']
 ALLOWED_IPS = ['127.0.0.1', '192.168/16']
 
 DEFAULT_FROM_EMAIL = 'noreply@domain.com'
@@ -21,8 +20,8 @@ CACHES = {
 }
 
 if DEBUG is True:
-    MIDDLEWARE_CLASSES = (
+    LOCAL_MIDDLEWARE = [
         'project.middleware.IPCheck',
         'project.middleware.HostCheck',
-    )
+    ]
 
