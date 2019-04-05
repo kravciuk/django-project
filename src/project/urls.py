@@ -11,7 +11,7 @@ from django.contrib import admin
 from .sitemaps import ProjectSitemap
 from . import views
 
-handler404 = 'project.views.error404'
+# handler404 = 'project.views.error404'
 
 sitemaps = {
     'general': ProjectSitemap(),

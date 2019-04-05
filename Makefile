@@ -21,7 +21,7 @@ pull:
 	git pull;
 
 run:
-	source ./env/bin/activate && python src/manage.py runserver 127.0.0.1:8000;
+	pipenv run python src/manage.py runserver 127.0.0.1:8000;
 
 urun:
 	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
@@ -42,38 +42,38 @@ flower:
 	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 syncdb:
-	source ./env/bin/activate && python src/manage.py syncdb;
+	pipenv run python src/manage.py syncdb;
 
 static:
-	source ./env/bin/activate && python src/manage.py collectstatic --noinput
+	pipenv run python src/manage.py collectstatic --noinput
 
 console:
-	source ./env/bin/activate && python src/manage.py ${app} --traceback
+	pipenv run python src/manage.py ${app} --traceback
 
 migrate:
-	source ./env/bin/activate && python src/manage.py migrate
+	pipenv run python src/manage.py migrate
 
 fakemigrate:
-	source ./env/bin/activate && python src/manage.py migrate --fake ${app}
+	pipenv run python src/manage.py migrate --fake ${app}
 
 commit:
-	source ./env/bin/activate && python src/manage.py makemigrations  ${app}
+	pipenv run python src/manage.py makemigrations  ${app}
 
 locale:
-	source ./env/bin/activate && python src/manage.py makemessages -a -s --ignore=env/* --ignore=var/* --keep-pot  -v3 --no-location
+	pipenv run python src/manage.py makemessages -a -s --ignore=env/* --ignore=var/* --keep-pot  -v3 --no-location
 
 compilemessages:
-	source ./env/bin/activate && python src/manage.py compilemessages
+	pipenv run python src/manage.py compilemessages
 
 help:
-	source ./env/bin/activate && python src/manage.py help
+	pipenv run python src/manage.py help
 
 # password managment
 passwd:
-	source ./env/bin/activate && python src/manage.py changepassword
+	pipenv run python src/manage.py changepassword
 
 adduser:
-	source ./env/bin/activate && python src/manage.py createsuperuser
+	pipenv run python src/manage.py createsuperuser
 
 shell:
-	source ./env/bin/activate && python src/manage.py shell
+	pipenv run python src/manage.py shell
