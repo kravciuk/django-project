@@ -25,7 +25,7 @@ Markdown==3.1
 mysqlclient==1.4.2.post1
 pilkit==2.0
 Pillow==6.0.0
-pycrypto==2.6.1
+pycryptodome==3.8.1
 Pygments==2.3.1
 pytz==2018.9
 rcssmin==1.0.6

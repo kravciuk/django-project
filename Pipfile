@@ -23,12 +23,12 @@ django-sitetree = "*"
 hashids = "*"
 iptools = "*"
 django-embed-video = "*"
-pycrypto = "*"
 lxml = "*"
 django-sekizai = "*"
 django-crispy-forms = "*"
 django-compressor = "*"
 django-dbbackup = "*"
+pycryptodome = "*"
 
 [requires]
 python_version = "3.6"
