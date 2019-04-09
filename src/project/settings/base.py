@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'vcms.comments',
 
     'project',
-    'example',
+    # 'example',
 )
 
 MIDDLEWARE = [

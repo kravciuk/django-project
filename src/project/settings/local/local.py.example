@@ -25,3 +25,23 @@ if DEBUG is True:
         'project.middleware.HostCheck',
     ]
 
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'OPTIONS': {
+                'debug': True,
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'sekizai.context_processors.sekizai',
+                ],
+                'loaders': [
+                    'django.template.loaders.app_directories.Loader',
+                ],
+            },
+        },
+    ]
+
