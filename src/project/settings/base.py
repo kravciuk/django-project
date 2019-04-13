@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'sitetree',
     'crispy_forms',
     'sekizai',
+    'widget_tweaks',
 
     'ckeditor',
     'ckeditor_uploader',

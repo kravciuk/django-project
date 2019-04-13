@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
-<script src="/static/jquery/jquery-2.1.4.min.js"></script>
-<script src="/static/admin/js/jquery.init.js"></script>
+    <script src="/static/jquery/jquery-2.2.4.min.js"></script>
+{#<script src="/static/admin/js/jquery.init.js"></script>#}
 
 {% render_block "js" %}
 {% render_block "css" %}
@@ -17,19 +17,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarColor01">
-            {% sitetree_menu from 'top_menu'  include "trunk,topmenu"  template "bootstrap_top_menu.html" %}
+            {% sitetree_menu from 'header_menu' include "trunk,topmenu"  template "bootstrap_top_menu.html" %}
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col">{% block content %}{% endblock %}</div>
-{#    <div class="w-100"></div>#}
-{#    <div class="col">Column</div>#}
-{#    <div class="col">Column</div>#}
-{#    <div class="w-100"></div>#}
-{#    <div class="col">Column</div>#}
-{#    <div class="col">Column</div>#}
-{#    <div class="col">Column</div>#}
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
     </div>
 
 {% vcms_admin %}
