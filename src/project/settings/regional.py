@@ -7,6 +7,7 @@ __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', 'English'),
+    ('ru', 'Russian'),
 ]
 
 TIME_ZONE = 'Europe/Vilnius'
