@@ -15,9 +15,4 @@ def error404(request):
 
 
 def index_page(request):
-    context = {
-        'title': 'Index page',
-        'text': 'Django project started',
-    }
-
-    return render(request, 'index.html', context)
+    return redirect('/%s/' % settings.LANGUAGE_CODE)
