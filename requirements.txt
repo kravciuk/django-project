@@ -11,12 +11,13 @@ django-dbbackup==3.2.0
 django-embed-video==1.2.0
 django-imagekit==4.0.2
 django-js-asset==1.2.2
-django-sekizai==0.10.0
-django-select2==6.3.1
+django-sekizai==1.0.0
+django-select2==7.0.3
 django-sitetree==1.12.0
 django-taggit==1.1.0
 django-taggit-autosuggest==0.3.7
 django-treebeard==4.3
+django-widget-tweaks==1.4.3
 hashids==1.2.0
 idna==2.8
 iptools==0.7.0
@@ -27,7 +28,7 @@ pilkit==2.0
 Pillow==6.0.0
 pycryptodome==3.8.1
 Pygments==2.3.1
-pytz==2018.9
+pytz==2019.1
 rcssmin==1.0.6
 requests==2.21.0
 rjsmin==1.0.12

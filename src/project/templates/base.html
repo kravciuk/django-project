@@ -13,7 +13,7 @@
 {% render_block "css" %}
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarColor01">
@@ -21,9 +21,9 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
+{#    <div class="container-fluid">#}
         {% block content %}{% endblock %}
-    </div>
+{#    </div>#}
 
 {% vcms_admin %}
 </div>
