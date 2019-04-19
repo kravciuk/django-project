@@ -29,6 +29,7 @@ django-crispy-forms = "*"
 django-compressor = "*"
 django-dbbackup = "*"
 pycryptodome = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.6"
