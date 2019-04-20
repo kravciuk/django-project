@@ -1,13 +1,27 @@
 {% extends "base.html" %}
-{% load vcms_tags %}
+{% load vcms_tags i18n %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    {% vcms_pages category=index as pages %}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% vcms_pages category='index' as pages %}
     <div class="row">
+        <div class="col-auto">
+
+        <div class="card-columns">
         {% for page in pages %}
-            <a href="{% url 'content_page' page.url %}">{{ page.title }}</a>
+
+            <div class="card">
+              <div class="card-body text-dark">
+                <h5 class="card-title"><a href="{{ page.reverse }}">{{ page.title }}</a></h5>
+                <p class="card-text">{{ page.short_content|safe }}</p>
+              </div>
+            </div>
+
         {% endfor %}
+        </div>
+
+        </div>
     </div>
 {% endblock %}
