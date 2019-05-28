@@ -38,6 +38,7 @@ urlpatterns += i18n_patterns(
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^share/', include('vcms.share.urls')),
+    url(r'^homepage/', include('homepage.urls')),
     url(r'^', include('vcms.content.urls')),
 
     prefix_default_language=False

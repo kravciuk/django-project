@@ -1,0 +1,9 @@
+{% load vu_tags %}
+<div style="font-size: larger; font-weight: bolder;">
+{{ previous_month_spent }} |
+{% if this_month_spent < this_month_planned %}<span style="color: #c80000">&#8595; {{ this_month_spent }} </span>{% endif %}
+{% if this_month_spent > this_month_planned %}<span style="color: #279d27">&#8593; {{ this_month_spent }} </span>{% endif %}
+<span style="color: #4b9852">€{{ this_month_spent|multiply:11.57 }}</span>
+/ {{ this_month_planned }}
+{% if this_month_spent < this_month_planned %}<span style="color: #981123">€-{{ this_month_planned|minus:this_month_spent|multiply:11.57 }}</span>{% endif %}
+</div>

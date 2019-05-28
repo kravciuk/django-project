@@ -33,19 +33,23 @@ INSTALLED_APPS = (
     'crispy_forms',
     'sekizai',
     'widget_tweaks',
+    'adminsortable2',
 
     'ckeditor',
     'ckeditor_uploader',
     'embed_video',
     'vu.sendfile',
 
+    'vu',
     'vcms',
     'vcms.content',
     'vcms.share',
     'vcms.comments',
 
-    'project',
+    'homepage',
     # 'example',
+    'project',
+
 )
 
 MIDDLEWARE = [
