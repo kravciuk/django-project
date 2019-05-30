@@ -6,12 +6,21 @@
 {% block content %}
 
     {% addtoblock 'css' %}
-        <link rel="stylesheet" href="{% static 'css/labels.css' %}">
         <link rel="stylesheet" href="{% static 'calendar/css/monthly.css' %}">
+        <style>
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: .15rem .25rem;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 1px solid rgba(0,0,0,.125);
+        }
+        </style>
     {% endaddtoblock %}
 
     <div class="row">
-        <div class="col_3_5">
+        <div class="col-sm">
             <a href="http://ovh-atom.kravciuk.com/munin/localhost/localhost/index.html">Munin</a>
             | <a href="http://ovh-atom.kravciuk.com/aws/">awstat</a><br />
             <a href="http://ovh-atom.kravciuk.com/vn/"> <img src="/media/bn.png?{% now "u" %}" style="max-width: 570px;"></a>
@@ -19,9 +28,9 @@
             <br />
             <div class="monthly" id="mycalendar"></div>
         </div>
-        <div class="col_2_5">
+        <div class="col-sm">
             {% domain_list as domains %}
-            <table class="basic_table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th width="60%">{% trans "Домен" %}</th>
@@ -49,9 +58,14 @@
             <br /><br />
             {% redmine_month_stats %} <br />
             {% redmine_tasks as tasks %}
-            {% for task in tasks %}
-                <a href="http://redmine.acoobe.com/issues/{{ task.task_id }}" target="_blank">{{ task.task }}</a> {{ task.project }} </br>
+            <ul class="list-group">
+            {% for name, records in tasks.items %}
+                <li class="list-group-item active">{{ name }}</li>
+                {% for task in records %}
+                    <li class="list-group-item"><a href="http://redmine.acoobe.com/issues/{{ task.task_id }}" target="_blank">{{ task.task }}</a> ({{ task.date }})</li>
+                {% endfor %}
             {% endfor %}
+            </ul>
 
         </div>
     </div>

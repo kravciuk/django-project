@@ -34,7 +34,15 @@ def links_cloud(group=None):
 @register.simple_tag()
 def redmine_tasks():
     redmine_data_update()
-    return RedmineTasks.objects.filter().order_by('date')
+    result = {}
+    rs = RedmineTasks.objects.filter().order_by('project', 'date')
+    for row in rs:
+        if row.project not in result:
+            result[row.project] = []
+        result[row.project].append(row)
+    return result
+
+
 
 
 @register.inclusion_tag('homepage/month_stats.html', takes_context=True)
