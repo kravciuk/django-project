@@ -15,7 +15,7 @@ config:
 	cp etc/uwsgi.example.ini etc/uwsgi.ini;
 
 requirements:
-	source ./env/bin/activate && pip install -r requirements.txt;
+	pipenv sync;
 
 pull:
 	git pull;
@@ -40,9 +40,6 @@ celery:
 
 flower:
 	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
-
-syncdb:
-	pipenv run python src/manage.py syncdb;
 
 static:
 	pipenv run python src/manage.py collectstatic --noinput
