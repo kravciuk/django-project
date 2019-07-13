@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import time
-from uwsgi_tasks import task, TaskExecutor, cron
+from uwsgi_tasks import task, TaskExecutor, cron, timer
 from django.conf import settings
 
 import logging as log
@@ -20,3 +20,4 @@ def backup():
     c = Command()
     c.handle({'clean': True, 'compress': True, })
     pass
+
