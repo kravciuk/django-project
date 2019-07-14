@@ -16,8 +16,7 @@ def project_task(delay=10):
 
 @cron(minute=20, hour=4)
 def backup():
-    from dbbackup.management.commands.dbbackup import Command
-    c = Command()
-    c.handle({'clean': True, 'compress': True, })
-    pass
+    from django.core.management import execute_from_command_line
+    argv = ['', 'dbbackup', '--compress', '--clean']
+    execute_from_command_line(argv)
 

@@ -6,8 +6,15 @@ import os
 SECRET_KEY = 'bvhaviahivGbkjsf(jbkjggygsf0983535'
 
 DEBUG = True
-ALLOWED_HOSTS = ['*', 'dev.localhost']
+ALLOWED_HOSTS = ['dev.localhost']
 ALLOWED_IPS = ['127.0.0.1', '192.168/16']
+
+DBBACKUP_HOSTNAME = ALLOWED_HOSTS[0]
+#pip install django-storages
+#DBBACKUP_STORAGE = 'storages.backends.ftp.FTPStorage
+#DBBACKUP_STORAGE_OPTIONS = {
+#    'location': 'ftp://user:pass@server:21'
+#}
 
 DEFAULT_FROM_EMAIL = 'noreply@domain.com'
 DEFAULT_FROM_NAME = 'Site Owner'

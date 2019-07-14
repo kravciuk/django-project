@@ -26,21 +26,23 @@ INSTALLED_APPS = (
 
     'compressor',
     'dbbackup',
-    'taggit',
-    'taggit_autosuggest',
-    'treebeard',
-    'sitetree',
     'crispy_forms',
     'sekizai',
     'widget_tweaks',
     'adminsortable2',
+    'constance',
+    'constance.backends.database',
 
+    'taggit',
+    'taggit_autosuggest',
+    'treebeard',
+    'sitetree',
     'ckeditor',
     'ckeditor_uploader',
     'embed_video',
-    'vu.sendfile',
 
     'vu',
+    'vu.sendfile',
     'vcms',
     'vcms.content',
     'vcms.share',
@@ -84,6 +86,8 @@ from .logging import *
 from .database import *
 from .regional import *
 from .additional import *
+from .constance import *
+from .dbbackup import *
 from .templates import *
 from .vcms import *
 
