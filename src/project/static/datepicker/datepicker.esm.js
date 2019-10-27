@@ -1,11 +1,11 @@
 /*!
- * Datepicker v1.0.7
+ * Datepicker v1.0.9
  * https://fengyuanchen.github.io/datepicker
  *
  * Copyright 2014-present Chen Fengyuan
  * Released under the MIT license
  *
- * Date: 2019-02-19T12:18:04.827Z
+ * Date: 2019-09-21T06:57:34.100Z
  */
 
 import $ from 'jquery';
@@ -504,20 +504,11 @@ var methods = {
       }
 
       if (parts.length === format.parts.length) {
+        // Set year and month first
         $.each(parts, function (i, part) {
           var value = parseInt(part, 10);
 
           switch (format.parts[i]) {
-            case 'dd':
-            case 'd':
-              date.setDate(value);
-              break;
-
-            case 'mm':
-            case 'm':
-              date.setMonth(value - 1);
-              break;
-
             case 'yy':
               date.setFullYear(2000 + value);
               break;
@@ -525,6 +516,24 @@ var methods = {
             case 'yyyy':
               // Converts 2-digit year to 2000+
               date.setFullYear(part.length === 2 ? 2000 + value : value);
+              break;
+
+            case 'mm':
+            case 'm':
+              date.setMonth(value - 1);
+              break;
+
+            default:
+          }
+        }); // Set day in the last to avoid converting `31/10/2019` to `01/10/2019`
+
+        $.each(parts, function (i, part) {
+          var value = parseInt(part, 10);
+
+          switch (format.parts[i]) {
+            case 'dd':
+            case 'd':
+              date.setDate(value);
               break;
 
             default:
@@ -624,7 +633,7 @@ var handlers = {
         if (format.hasMonth) {
           this.showView(VIEWS.MONTHS);
         } else {
-          $target.addClass(options.pickedClass).siblings().removeClass(options.pickedClass);
+          $target.siblings(".".concat(options.pickedClass)).removeClass(options.pickedClass).data('view', 'year');
           this.hideView();
         }
 
@@ -642,7 +651,7 @@ var handlers = {
         if (format.hasMonth) {
           this.showView(VIEWS.MONTHS);
         } else {
-          $target.addClass(options.pickedClass).siblings().removeClass(options.pickedClass);
+          $target.addClass(options.pickedClass).data('view', 'year picked').siblings(".".concat(options.pickedClass)).removeClass(options.pickedClass).data('view', 'year');
           this.hideView();
         }
 
@@ -678,7 +687,7 @@ var handlers = {
         if (format.hasDay) {
           this.showView(VIEWS.DAYS);
         } else {
-          $target.addClass(options.pickedClass).siblings().removeClass(options.pickedClass);
+          $target.siblings(".".concat(options.pickedClass)).removeClass(options.pickedClass).data('view', 'month');
           this.hideView();
         }
 
@@ -698,7 +707,7 @@ var handlers = {
         if (format.hasDay) {
           this.showView(VIEWS.DAYS);
         } else {
-          $target.addClass(options.pickedClass).siblings().removeClass(options.pickedClass);
+          $target.addClass(options.pickedClass).data('view', 'month picked').siblings(".".concat(options.pickedClass)).removeClass(options.pickedClass).data('view', 'month');
           this.hideView();
         }
 
