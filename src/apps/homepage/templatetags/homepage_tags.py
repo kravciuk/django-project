@@ -7,7 +7,7 @@ from django import template
 from django.db.models import Sum
 
 from homepage.models import HomepageDomains, HomepageLinkGroup, RedmineTasks, RedmineMonthStats
-from homepage.tasks import redmine_data_update
+from project.tasks import task_update_redmine_data
 
 register = template.Library()
 
@@ -33,7 +33,7 @@ def links_cloud(group=None):
 
 @register.simple_tag()
 def redmine_tasks():
-    redmine_data_update()
+    task_update_redmine_data.spool()
     result = {}
     rs = RedmineTasks.objects.filter().order_by('project', 'date')
     for row in rs:

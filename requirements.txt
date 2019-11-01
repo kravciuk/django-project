@@ -9,7 +9,7 @@ django-ckeditor==5.7.1
 django-classy-tags==0.9.0
 django-compressor==2.3
 django-constance==2.4.0
-django-crispy-forms==1.7.2
+django-crispy-forms==1.8.0
 django-dbbackup==3.2.0
 django-embed-video==1.3
 django-imagekit==4.0.2
@@ -18,7 +18,7 @@ django-picklefield==2.0
 django-sekizai==1.0.0
 django-select2==7.1.1
 django-silk==3.0.2
-django-sitetree==1.13.0
+django-sitetree==1.13.1
 django-taggit==1.1.0
 django-taggit-autosuggest==0.3.8
 django-treebeard==4.3
@@ -33,8 +33,8 @@ Markdown==3.1.1
 MarkupSafe==1.1.1
 mysqlclient==1.4.4
 pilkit==2.0
-Pillow==6.2.0
-psycopg2==2.8.3
+Pillow==6.2.1
+psycopg2==2.8.4
 pycodestyle==2.5.0
 pycryptodome==3.9.0
 Pygments==2.4.2
@@ -47,4 +47,3 @@ six==1.12.0
 sqlparse==0.3.0
 urllib3==1.25.6
 uWSGI==2.0.18
-uwsgi-tasks==0.7.3

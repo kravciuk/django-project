@@ -1,20 +1,28 @@
 from __future__ import absolute_import
 
 import time
-from uwsgi_tasks import task, TaskExecutor, cron, timer
 from django.conf import settings
+from uwsgidecorators import cron, spool, timer
 
-import logging as log
-
-
-@task(executor=TaskExecutor.SPOOLER, retry_count=1, retry_timeout=5)
-def project_task(delay=10):
-    log.debug('Task "project_task" started.')
-    time.sleep(delay)
-    log.debug('Task "project_task" ended.')
+from logging import getLogger
+log = getLogger(__name__)
 
 
-@cron(minute=20, hour=4)
+@timer(600, target='spooler')
+def timer_update_redmine_data():
+    from homepage.tasks import redmine_data_update
+    redmine_data_update()
+
+@spool
+def task_update_redmine_data(args):
+    from homepage.tasks import redmine_data_update
+    try:
+        redmine_data_update()
+    except Exception as e:
+        log.error(e)
+
+
+@cron(20, 4, -1, -1, -1)
 def backup():
     from django.core.management import execute_from_command_line
     argv = ['', 'dbbackup', '--compress', '--clean']
