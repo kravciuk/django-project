@@ -2,7 +2,11 @@ from __future__ import absolute_import
 
 import time
 from django.conf import settings
-from uwsgidecorators import cron, spool, timer
+try:
+    from uwsgidecorators import cron, spool, timer
+except:
+    print('UWSGI not available, use fake tasks')
+    from vu.uwsgi_fake_decorators import cron, spool, timer
 
 from logging import getLogger
 log = getLogger(__name__)
