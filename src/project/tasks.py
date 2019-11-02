@@ -18,7 +18,7 @@ def timer_update_redmine_data():
     redmine_data_update()
 
 @spool
-def task_update_redmine_data(args):
+def task_update_redmine_data(*args, **kwargs):
     from homepage.tasks import redmine_data_update
     try:
         redmine_data_update()
