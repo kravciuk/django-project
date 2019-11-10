@@ -57,4 +57,5 @@ EMBED_VIDEO_BACKENDS = (
     'embed_video.backends.VimeoBackend',
     'embed_video.backends.SoundCloudBackend',
     'vcms.video.backends.RedTube',
+    'vcms.video.backends.XTube',
 )
