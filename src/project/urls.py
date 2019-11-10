@@ -30,7 +30,6 @@ urlpatterns = [
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^select2/', include('django_select2.urls')),
-
 ]
 
 if 'silk' in settings.INSTALLED_APPS:
@@ -38,6 +37,7 @@ if 'silk' in settings.INSTALLED_APPS:
 
 urlpatterns += i18n_patterns(
     url(r'^$',TemplateView.as_view(template_name='index.html'), name="homepage"),
+    url(r'^sitemap-content/$',TemplateView.as_view(template_name='sitemap.html'), name="sitemap_content_html"),
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^share/', include('vcms.share.urls')),
