@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load vcms_share i18n sekizai_tags staticfiles embed_video_tags %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    {% show_snipets as snippet %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ snippet.title }}</h2>
+        </div>
+    </div>
+
+    {% if snippet.video_link %}
+		<div class="row">
+			<div class="col-md-12">{% video snippet.url 'large' %}</div>
+        </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
+from django.urls import path
 from django.conf.urls.static import static
 from django.conf.urls import include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -42,6 +43,7 @@ urlpatterns += i18n_patterns(
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^share/', include('vcms.share.urls')),
     url(r'^homepage/', include('homepage.urls')),
+    path('tube/', include('tube.urls', namespace='tube')),
     url(r'^', include('vcms.content.urls')),
 
     prefix_default_language=False
