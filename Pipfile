@@ -31,7 +31,7 @@ pycryptodome = "*"
 django-widget-tweaks = "*"
 django-admin-sortable2 = "*"
 django-constance = {extras = ["database"],version = "*"}
-psycopg2 = "*"
+django-developer-panel = "*"
 
 [requires]
 python_version = "3.6"
