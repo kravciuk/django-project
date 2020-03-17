@@ -33,7 +33,7 @@ class Redmine:
                 issues as i ,
                 projects as p
             WHERE
-                i.assigned_to_id = 37 AND i.status_id NOT IN (9, 12)
+                i.assigned_to_id = 37 AND i.status_id NOT IN (9, 12, 10)
                 AND i.created_on > DATE_ADD(NOW(), INTERVAL -90 DAY)
                 AND p.id = i.project_id
             ORDER BY i.id DESC"""
