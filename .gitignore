@@ -10,14 +10,6 @@ __pycache__/
 .Python
 env/
 bin/
-build/
-develop-eggs/
-# dist/
-eggs/
-lib/
-lib64/
-parts/
-sdist/
 var/
 *.egg-info/
 .installed.cfg
