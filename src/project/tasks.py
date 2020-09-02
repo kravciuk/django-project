@@ -23,7 +23,7 @@ def task_update_redmine_data(*args, **kwargs):
     try:
         redmine_data_update()
     except Exception as e:
-        log.error(e)
+        log.error(e, exc_info=True)
 
 
 @cron(20, 4, -1, -1, -1)

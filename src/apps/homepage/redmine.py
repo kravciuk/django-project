@@ -15,8 +15,12 @@ log = logging.getLogger('tasks')
 class Redmine:
 
     def __init__(self):
+        # cnx = mysql.connector.connect(user='redmine', password='oeDLHF97X9rbTm6jpK', host='109.235.71.138',
+        #                               database='redmine_acoobe_com', use_pure=True, charset='utf8')
         self.db = _mysql.connect(host=settings.REDMINE_DB_HOST, db=settings.REDMINE_DB_NAME,
-                                 user=settings.REDMINE_DB_USER, passwd=settings.REDMINE_DB_PASS, charset='utf8', init_command='SET NAMES UTF8')
+                                 user=settings.REDMINE_DB_USER, passwd=settings.REDMINE_DB_PASS,
+                                 charset='utf8', init_command='SET NAMES UTF8', port=3306
+                                 )
         log.info('MySQL connection to redmine opened.')
 
         close_old_connections()

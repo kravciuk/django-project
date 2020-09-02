@@ -9,6 +9,8 @@ log = getLogger(__name__)
 
 
 class Example(models.Model):
+    name = models.CharField(_(u'Name'), max_length=64)
+
 
     class Meta:
         verbose_name = _(u'Example')
