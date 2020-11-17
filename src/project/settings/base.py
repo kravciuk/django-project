@@ -49,7 +49,6 @@ INSTALLED_APPS = (
     'vcms.comments',
 
     'homepage',
-    'tube',
     # 'example',
     'project',
 

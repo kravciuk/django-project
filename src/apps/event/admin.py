@@ -5,17 +5,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Example
+from .models import Event, Group, Hipertonic, Drug
 
 from logging import getLogger
 log = getLogger(__name__)
 
 
-class ExampleAdmin(admin.ModelAdmin):
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
     list_display = []
     list_filter = []
     search_fields = []
     autocomplete_fields = []
-
-
-admin.site.register(Example, ExampleAdmin)

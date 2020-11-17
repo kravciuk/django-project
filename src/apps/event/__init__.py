@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
-ult_app_config = 'tube.apps.DefaultConfig'
+default_app_config = 'event.apps.DefaultConfig'

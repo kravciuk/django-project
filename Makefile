@@ -5,6 +5,7 @@ all: ;@echo 'Run with option (install, run, syncdb, etc...)'
 
 install: var requirements migrate
 up: pull migrate static reload
+fup: pull reload
 
 var:
 	mkdir -p var var/htdocs/static var/spooler var/htdocs/media var/htdocs/protected var/logs var/backup;

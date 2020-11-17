@@ -5,7 +5,7 @@ from django.apps import AppConfig
 
 
 class DefaultConfig(AppConfig):
-    name = 'tube'
+    name = 'event'
 
     def ready(self):
         from . import signals

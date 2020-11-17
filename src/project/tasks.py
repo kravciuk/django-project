@@ -11,7 +11,6 @@ except:
 from logging import getLogger
 log = getLogger(__name__)
 
-
 @timer(600, target='spooler')
 def timer_update_redmine_data(signum):
     from homepage.tasks import redmine_data_update
@@ -32,3 +31,14 @@ def backup():
     argv = ['', 'dbbackup', '--compress', '--clean']
     execute_from_command_line(argv)
 
+
+@spool
+# @spool(pass_arguments=True)
+def example_task(*args, **kwargs):
+    from example.models import Example
+    log.debug('Task "example_task" started.')
+    # print(args)
+    # print(kwargs)
+    print(Example.objects.get(pk=kwargs['pk']))
+    time.sleep(kwargs['delay'])
+    log.debug('Task "example_task" ended.')
