@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
+import mysql.connector
+
 import MySQLdb as _mysql
 from datetime import datetime
 
@@ -15,17 +17,14 @@ log = logging.getLogger('tasks')
 class Redmine:
 
     def __init__(self):
-        self.db = _mysql.connect(host=settings.REDMINE_DB_HOST, db=settings.REDMINE_DB_NAME,
-                                 user=settings.REDMINE_DB_USER, passwd=settings.REDMINE_DB_PASS,
-                                 charset='utf8', init_command='SET NAMES UTF8', port=3306
-                                 )
-        log.info('MySQL connection to redmine opened.')
+        self.db = mysql.connector.connect(user=settings.REDMINE_DB_USER, password=settings.REDMINE_DB_PASS, host=settings.REDMINE_DB_HOST,
+                                      database=settings.REDMINE_DB_NAME, use_pure=True, charset='utf8')
+        self.cursor = self.db.cursor()
 
         close_old_connections()
 
     def end(self):
         self.db.close()
-        log.info('MySQL connection to redmine closed.')
 
     def import_tasks(self):
         query = """SELECT
@@ -41,27 +40,23 @@ class Redmine:
             ORDER BY i.id DESC"""
 
         try:
-            self.db.query(query)
-            res = self.db.use_result()
+            self.cursor.execute(query)
             rs = list(RedmineTasks.objects.filter().values_list('task_id', flat=True))
         except Exception as e:
             log.error('MySQL error: %s' % e)
             return
 
-        row = res.fetch_row()
-        while row:
-            task_id = int(row[0][1])
+        for row in self.cursor:
+            task_id = int(row[1])
             if task_id in rs:
                 rs.remove(task_id)
             else:
-                task = RedmineTasks(
-                    date=row[0][14],
-                    project=row[0][0],
-                    task=row[0][4],
-                    task_id=row[0][1]
+                RedmineTasks(
+                    date=row[14],
+                    project=row[0],
+                    task=row[4],
+                    task_id=row[1]
                 ).save()
-
-            row = res.fetch_row()
 
         RedmineTasks.objects.filter(task_id__in=rs).delete()
 
@@ -76,12 +71,10 @@ class Redmine:
                 AND spent_on='%s'
             GROUP BY spent_on""" % _date.strftime("%Y-%m-%d")
 
-        self.db.query(query)
-        res = self.db.use_result()
-        row = res.fetch_row()
-        if row:
+        self.cursor.execute(query)
+        for row in self.cursor:
             obj, created = RedmineMonthStats.objects.get_or_create(
                 date=_date
             )
-            obj.hours = row[0][0]
+            obj.hours = row[0]
             obj.save()

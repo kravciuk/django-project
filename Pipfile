@@ -32,6 +32,7 @@ django-admin-sortable2 = "*"
 django-constance = {extras = ["database"],version = "*"}
 django-developer-panel = "*"
 mysqlclient = "*"
+mysql-connector-python = "*"
 
 [requires]
 python_version = "3.8"
