@@ -9,10 +9,16 @@ from logging import getLogger
 log = getLogger(__name__)
 
 
+class ExampleManager(models.Manager):
+    def aaa(self):
+        print("AAA")
+
 
 class Example(models.Model):
     name = models.CharField(_(u'Name'), max_length=64)
 
+    objects = models.Manager()
+    storage = ExampleManager()
 
     class Meta:
         verbose_name = _(u'Example')

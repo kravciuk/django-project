@@ -59,11 +59,23 @@ LOGGING = {
             'backupCount': 7,
             'formatter': 'extended',
         },
+        'trash_error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'var/logs/trash_error.log',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 7,
+            'formatter': 'extended',
+        },
     },
     'loggers': {
         'django.db': {
             'handlers': ['null'],
             'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.security.DisallowedHost': {
+            'handlers': ['trash_error'],
             'propagate': False,
         },
         '': {

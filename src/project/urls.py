@@ -24,7 +24,7 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^su/', admin.site.urls),
+    url(r'^%s/' % settings.ADMIN_LOCATION_URL, admin.site.urls),
 
     url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps}),
@@ -41,10 +41,10 @@ urlpatterns += i18n_patterns(
     url(r'^sitemap-content/$',TemplateView.as_view(template_name='sitemap.html'), name="sitemap_content_html"),
 
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^share/', include('vcms.share.urls')),
-    url(r'^homepage/', include('homepage.urls')),
+    # url(r'^share/', include('vcms.share.urls')),
+    # url(r'^homepage/', include('homepage.urls')),
 #    path('example/', include('example.urls', namespace='example')),
-    url(r'^', include('vcms.content.urls')),
+     url(r'^', include('vcms.content.urls')),
 
     prefix_default_language=False
 )

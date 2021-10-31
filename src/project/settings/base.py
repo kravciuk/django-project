@@ -45,10 +45,9 @@ INSTALLED_APPS = (
     'vu.sendfile',
     'vcms',
     'vcms.content',
-    'vcms.share',
     'vcms.comments',
 
-    'homepage',
+    # 'homepage',
     # 'example',
     'project',
 
@@ -81,6 +80,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(VAR_DIR, 'htdocs/media')
 MEDIA_URL = '/media/'
+
+ADMIN_LOCATION_URL = 'admin'
 
 from .logging import *
 from .database import *
