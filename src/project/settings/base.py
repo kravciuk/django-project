@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'vu.sendfile',
     'vcms',
     'vcms.content',
+    'vcms.share',
     'vcms.comments',
 
     # 'homepage',
