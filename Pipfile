@@ -31,8 +31,7 @@ django-widget-tweaks = "*"
 django-admin-sortable2 = "*"
 django-constance = {extras = ["database"],version = "*"}
 django-developer-panel = "*"
-mysqlclient = "*"
-mysql-connector-python = "*"
+psycopg2 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
