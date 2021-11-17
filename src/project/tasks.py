@@ -11,10 +11,10 @@ except:
 from logging import getLogger
 log = getLogger(__name__)
 
-@timer(600, target='spooler')
-def timer_update_redmine_data(signum):
-    from homepage.tasks import redmine_data_update
-    redmine_data_update()
+# @timer(600, target='spooler')
+# def timer_update_redmine_data(signum):
+#     from homepage.tasks import redmine_data_update
+#     redmine_data_update()
 
 @spool
 def task_update_redmine_data(*args, **kwargs):

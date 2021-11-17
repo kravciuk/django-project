@@ -25,7 +25,7 @@ run:
 	pipenv run python src/manage.py runserver 127.0.0.1:8000;
 
 urun:
-	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
+	source ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
 
 uwsgi:
 	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
