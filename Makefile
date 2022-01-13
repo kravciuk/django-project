@@ -28,19 +28,19 @@ urun:
 	source ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
 
 uwsgi:
-	source ./env/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
+	source ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
 
 reload:
-	source ./env/bin/activate && uwsgi --reload var/uwsgi.pid
+	source ./.venv/bin/activate && uwsgi --reload var/uwsgi.pid
 
 kill:
 	kill -9 `cat var/uwsgi.pid`
 
 celery:
-	source ./env/bin/activate && celery --workdir=src -A project worker -l debug -C
+	source ./.venv/bin/activate && celery --workdir=src -A project worker -l debug -C
 
 flower:
-	source ./env/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
+	source ./.venv/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 static:
 	pipenv run python src/manage.py collectstatic --noinput
