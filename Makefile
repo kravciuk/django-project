@@ -3,7 +3,6 @@ CURRENT_DIR = $(shell pwd)
 
 all: ;@echo 'Run with option (install, run, syncdb, etc...)'
 
-install: var requirements migrate
 up: pull migrate static reload
 fup: pull reload
 
@@ -75,3 +74,6 @@ adduser:
 
 shell:
 	pipenv run python src/manage.py shell
+
+install:
+	pipenv install --keep-outdated ${app}

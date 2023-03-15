@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.conf import settings
-from django.urls import path
+from django.urls import path, re_path, include
 from django.conf.urls.static import static
-from django.conf.urls import include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps import views as sitemap_views
@@ -24,27 +23,28 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^%s/' % settings.ADMIN_LOCATION_URL, admin.site.urls),
+    re_path(r'^%s/' % settings.ADMIN_LOCATION_URL, admin.site.urls),
 
-    url(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps}),
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^select2/', include('django_select2.urls')),
+    re_path(r'^sitemap\.xml$', sitemap_views.index, {'sitemaps': sitemaps}),
+    re_path(r'^sitemap-(?P<section>.+)\.xml$', sitemap_views.sitemap, {'sitemaps': sitemaps}),
+    re_path(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    re_path(r'^select2/', include('django_select2.urls')),
+    path('api/', include('project.api.urls')),
 ]
 
 if 'silk' in settings.INSTALLED_APPS:
-    urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
+    urlpatterns += [re_path(r'^silk/', include('silk.urls', namespace='silk'))]
 
 urlpatterns += i18n_patterns(
-    url(r'^$',TemplateView.as_view(template_name='index.html'), name="homepage"),
-    url(r'^sitemap-content/$',TemplateView.as_view(template_name='sitemap.html'), name="sitemap_content_html"),
+    re_path(r'^$',TemplateView.as_view(template_name='index.html'), name="homepage"),
+    re_path(r'^sitemap-content/$',TemplateView.as_view(template_name='sitemap.html'), name="sitemap_content_html"),
 
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^share/', include('vcms.share.urls')),
-    # url(r'^homepage/', include('homepage.urls')),
-#    path('example/', include('example.urls', namespace='example')),
-     url(r'^', include('vcms.content.urls')),
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
+    re_path(r'^share/', include('share.urls')),
+
+     # path('example/', include('example.urls', namespace='example')),
+     re_path(r'^', include('content.urls')),
 
     prefix_default_language=False
 )

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
-import colorlog
-
 # Configure logging
 # -----------------------------------------------------------------------------------
 LOGGING = {
@@ -29,17 +27,6 @@ LOGGING = {
             '(%(asctime)s; %(filename)s:%(lineno)d)',
             'datefmt': "%Y-%m-%d %H:%M:%S",
         },
-        'color': {
-            '()': 'colorlog.ColoredFormatter',
-            'format': '%(log_color)s%(levelname)-8s %(message)s (%(filename)s:%(lineno)d)',
-            'log_colors': {
-                'DEBUG':    'cyan',
-                'INFO':     'white',
-                'WARNING':  'yellow',
-                'ERROR':    'red',
-                'CRITICAL': 'red,bg_white',
-            },
-        },
     },
     'handlers': {
         'null': {
@@ -49,7 +36,7 @@ LOGGING = {
             'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
-            'formatter': 'color',
+            'formatter': 'verbose',
         },
         'error': {
             'level': 'ERROR',
@@ -69,6 +56,11 @@ LOGGING = {
         },
     },
     'loggers': {
+        'PIL': {
+            'handlers': ['null'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
         'django.db': {
             'handlers': ['null'],
             'level': 'DEBUG',

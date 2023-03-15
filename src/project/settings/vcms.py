@@ -2,7 +2,7 @@
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
 import os
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .base import MEDIA_ROOT
 

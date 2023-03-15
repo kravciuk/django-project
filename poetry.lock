@@ -1,0 +1,605 @@
+[[package]]
+name = "asgiref"
+version = "3.6.0"
+description = "ASGI specs, helper code, and adapters"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
+
+[[package]]
+name = "attrs"
+version = "22.2.0"
+description = "Classes Without Boilerplate"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+cov = ["attrs", "coverage-enable-subprocess", "coverage[toml] (>=5.3)"]
+dev = ["attrs"]
+docs = ["furo", "sphinx", "myst-parser", "zope.interface", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier"]
+tests = ["attrs", "zope.interface"]
+tests-no-zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
+tests_no_zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
+
+[[package]]
+name = "certifi"
+version = "2022.12.7"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "charset-normalizer"
+version = "3.1.0"
+description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+category = "dev"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
+name = "colorlog"
+version = "6.7.0"
+description = "Add colours to the output of Python's logging module."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+development = ["black", "flake8", "mypy", "pytest", "types-colorama"]
+
+[[package]]
+name = "django"
+version = "4.1.7"
+description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+asgiref = ">=3.5.2,<4"
+sqlparse = ">=0.2.2"
+tzdata = {version = "*", markers = "sys_platform == \"win32\""}
+
+[package.extras]
+argon2 = ["argon2-cffi (>=19.1.0)"]
+bcrypt = ["bcrypt"]
+
+[[package]]
+name = "django-appconf"
+version = "1.0.5"
+description = "A helper class for handling configuration defaults of packaged apps gracefully."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = "*"
+
+[[package]]
+name = "django-ckeditor"
+version = "6.5.1"
+description = "Django admin CKEditor integration."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=2.0"
+
+[[package]]
+name = "django-classy-tags"
+version = "4.0.0"
+description = "Class based template tags for Django"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2"
+
+[[package]]
+name = "django-constance"
+version = "2.9.1"
+description = "Django live settings with pluggable backends, including Redis."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+database = ["django-picklefield"]
+redis = ["redis"]
+
+[[package]]
+name = "django-crispy-forms"
+version = "1.14.0"
+description = "Best way to have Django DRY forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "django-filter"
+version = "22.1"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
+name = "django-imagekit"
+version = "4.1.0"
+description = "Automated image processing for Django models."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django-appconf = {version = "*", markers = "python_version > \"3\""}
+pilkit = ">=0.2.0"
+six = "*"
+
+[package.extras]
+async = ["django-celery (>=3.0)"]
+async_dramatiq = ["django-dramatiq (>=0.4.0)"]
+async_rq = ["django-rq (>=0.6.0)"]
+
+[[package]]
+name = "django-js-asset"
+version = "2.0.0"
+description = "script tag with additional attributes for django.forms.Media"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
+name = "django-picklefield"
+version = "3.1"
+description = "Pickled object field for Django"
+category = "main"
+optional = false
+python-versions = ">=3"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[package.extras]
+tests = ["tox"]
+
+[[package]]
+name = "django-sekizai"
+version = "4.0.0"
+description = "Django Sekizai"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+django = ">=3.2"
+django-classy-tags = ">=3.0"
+
+[[package]]
+name = "django-select2"
+version = "8.1.1"
+description = "This is a Django_ integration of Select2_."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+django = ">=3.2"
+django-appconf = ">=0.6.0"
+
+[package.extras]
+docs = ["sphinx"]
+selenium = ["selenium"]
+test = ["pytest", "pytest-cov", "pytest-django", "selenium"]
+
+[[package]]
+name = "django-sitetree"
+version = "1.17.3"
+description = "This reusable Django app introduces site tree, menu and breadcrumbs navigation elements"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "django-taggit"
+version = "3.1.0"
+description = "django-taggit is a reusable Django application for simple tagging."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
+name = "django-taggit-autosuggest"
+version = "0.4.1"
+description = "Autosuggestions for django-taggit"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django-taggit = "*"
+
+[[package]]
+name = "django-treebeard"
+version = "4.6.1"
+description = "Efficient tree implementations for Django"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
+name = "django-widget-tweaks"
+version = "1.4.12"
+description = "Tweak the form field rendering in templates, not in python-level form definitions."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "djangorestframework"
+version = "3.14.0"
+description = "Web APIs for Django, made easy."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+django = ">=3.0"
+pytz = "*"
+
+[[package]]
+name = "exceptiongroup"
+version = "1.1.1"
+description = "Backport of PEP 654 (exception groups)"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+test = ["pytest (>=6)"]
+
+[[package]]
+name = "hashids"
+version = "1.3.1"
+description = "Implements the hashids algorithm in python. For more information, visit http://hashids.org/"
+category = "main"
+optional = false
+python-versions = ">=2.7"
+
+[package.extras]
+test = ["pytest (>=2.1.0)"]
+
+[[package]]
+name = "idna"
+version = "3.4"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "iniconfig"
+version = "2.0.0"
+description = "brain-dead simple config-ini parsing"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "lxml"
+version = "4.9.2"
+description = "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
+
+[package.extras]
+cssselect = ["cssselect (>=0.7)"]
+html5 = ["html5lib"]
+htmlsoup = ["beautifulsoup4"]
+source = ["Cython (>=0.29.7)"]
+
+[[package]]
+name = "markdown"
+version = "3.4.1"
+description = "Python implementation of Markdown."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+testing = ["coverage", "pyyaml"]
+
+[[package]]
+name = "markdown-it-py"
+version = "2.2.0"
+description = "Python port of markdown-it. Markdown parsing, done right!"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+mdurl = ">=0.1,<1.0"
+
+[package.extras]
+benchmarking = ["psutil", "pytest", "pytest-benchmark"]
+code_style = ["pre-commit (>=3.0,<4.0)"]
+compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "mistletoe (>=1.0,<2.0)", "mistune (>=2.0,<3.0)", "panflute (>=2.3,<3.0)"]
+linkify = ["linkify-it-py (>=1,<3)"]
+plugins = ["mdit-py-plugins"]
+profiling = ["gprof2dot"]
+rtd = ["attrs", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx-book-theme"]
+testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+description = "Markdown URL utilities"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "packaging"
+version = "23.0"
+description = "Core utilities for Python packages"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "pilkit"
+version = "2.0"
+description = "A collection of utilities and processors for the Python Imaging Libary."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pillow"
+version = "9.4.0"
+description = "Python Imaging Library (Fork)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-issues (>=3.0.1)", "sphinx-removed-in", "sphinxext-opengraph"]
+tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
+
+[[package]]
+name = "pluggy"
+version = "1.0.0"
+description = "plugin and hook calling mechanisms for python"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+dev = ["pre-commit", "tox"]
+testing = ["pytest", "pytest-benchmark"]
+
+[[package]]
+name = "pycryptodome"
+version = "3.17"
+description = "Cryptographic library for Python"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
+name = "pygments"
+version = "2.14.0"
+description = "Pygments is a syntax highlighting package written in Python."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+plugins = ["importlib-metadata"]
+
+[[package]]
+name = "pytest"
+version = "7.2.2"
+description = "pytest: simple powerful testing with Python"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+attrs = ">=19.2.0"
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+exceptiongroup = {version = ">=1.0.0rc8", markers = "python_version < \"3.11\""}
+iniconfig = "*"
+packaging = "*"
+pluggy = ">=0.12,<2.0"
+tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
+
+[package.extras]
+testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+
+[[package]]
+name = "pytz"
+version = "2022.7.1"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "requests"
+version = "2.28.2"
+description = "Python HTTP for Humans."
+category = "main"
+optional = false
+python-versions = ">=3.7, <4"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+charset-normalizer = ">=2,<4"
+idna = ">=2.5,<4"
+urllib3 = ">=1.21.1,<1.27"
+
+[package.extras]
+socks = ["PySocks (>=1.5.6,!=1.5.7)"]
+use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "rich"
+version = "13.3.2"
+description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+category = "dev"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.dependencies]
+markdown-it-py = ">=2.2.0,<3.0.0"
+pygments = ">=2.13.0,<3.0.0"
+
+[package.extras]
+jupyter = ["ipywidgets (>=7.5.1,<9)"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "sqlparse"
+version = "0.4.3"
+description = "A non-validating SQL parser."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "tzdata"
+version = "2022.7"
+description = "Provider of IANA time zone data"
+category = "main"
+optional = false
+python-versions = ">=2"
+
+[[package]]
+name = "urllib3"
+version = "1.26.15"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+
+[package.extras]
+brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
+secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+
+[[package]]
+name = "uwsgi"
+version = "2.0.21"
+description = "The uWSGI server"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "606870df872209f9a94ee1e6784dd83be49bc2b608629ed46c036013ceadd1b3"
+
+[metadata.files]
+asgiref = []
+attrs = []
+certifi = []
+charset-normalizer = []
+colorama = []
+colorlog = []
+django = []
+django-appconf = []
+django-ckeditor = []
+django-classy-tags = []
+django-constance = []
+django-crispy-forms = []
+django-filter = []
+django-imagekit = []
+django-js-asset = []
+django-picklefield = []
+django-sekizai = []
+django-select2 = []
+django-sitetree = []
+django-taggit = []
+django-taggit-autosuggest = []
+django-treebeard = []
+django-widget-tweaks = []
+djangorestframework = []
+exceptiongroup = []
+hashids = [
+    {file = "hashids-1.3.1-py2.py3-none-any.whl", hash = "sha256:8bddd1acba501bfc9306e7e5a99a1667f4f2cacdc20cbd70bcc5ddfa5147c94c"},
+    {file = "hashids-1.3.1.tar.gz", hash = "sha256:6c3dc775e65efc2ce2c157a65acb776d634cb814598f406469abef00ae3f635c"},
+]
+idna = []
+iniconfig = []
+lxml = []
+markdown = []
+markdown-it-py = []
+mdurl = []
+packaging = []
+pilkit = []
+pillow = []
+pluggy = []
+pycryptodome = []
+pygments = []
+pytest = []
+pytz = []
+requests = []
+rich = []
+six = []
+sqlparse = []
+tomli = []
+tzdata = []
+urllib3 = []
+uwsgi = []

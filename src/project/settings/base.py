@@ -7,6 +7,7 @@ import re
 BASE_DIR = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../'))
 VAR_DIR = os.path.normpath(os.path.join(BASE_DIR, '../var'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'libs'))
 
 SECRET_KEY = '=75dq8^7#rj%s#d#n^!9uer=s0hfvyd+d&knbn!2q5y2y28uh6'
 
@@ -24,32 +25,31 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'compressor',
-    'dbbackup',
+    #'compressor',
+    # 'dbbackup',
     'crispy_forms',
     'sekizai',
     'widget_tweaks',
-    'adminsortable2',
+    #'adminsortable2',
     'constance',
     'constance.backends.database',
-
+    'rest_framework',
+    'rest_framework.authtoken',
     'taggit',
     'taggit_autosuggest',
     'treebeard',
     'sitetree',
     'ckeditor',
     'ckeditor_uploader',
-    'embed_video',
+    #'embed_video',
 
-    'vu',
-    'vu.sendfile',
-    'vcms',
-    'vcms.content',
-    'vcms.share',
-    'vcms.comments',
+    # 'vu',
+    # 'vu.sendfile',
 
-    # 'homepage',
-    # 'example',
+
+    'content',
+    'share',
+    'comments',
     'project',
 
 )
@@ -83,6 +83,8 @@ MEDIA_ROOT = os.path.join(VAR_DIR, 'htdocs/media')
 MEDIA_URL = '/media/'
 
 ADMIN_LOCATION_URL = 'admin'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 from .logging import *
 from .database import *

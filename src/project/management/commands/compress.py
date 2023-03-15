@@ -14,13 +14,12 @@ class Command(BaseCommand):
         super(Command, self).__init__(*args, **kwargs)
 
     def handle(self, *args, **options):
-        print self.ext
         path = settings.STATIC_ROOT
         for dir_name, sub_dir_list, file_list in os.walk(path):
             for file_name in file_list:
                 _name, _ext = os.path.splitext(file_name)
                 if _ext in self.ext:
-                    print "%s/%s" % (dir_name, file_name)
+                    print ("%s/%s" % (dir_name, file_name))
 
                     in_file = "%s/%s" % (dir_name, file_name)
                     out_gz = "%s/%s.gz" % (dir_name, file_name)

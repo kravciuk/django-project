@@ -1,4 +1,4 @@
-{% load i18n sekizai_tags static vcms_tags sitetree %}
+{% load i18n sekizai_tags static content_tags sitetree %}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_language_info_list for LANGUAGES as languages %}
@@ -51,7 +51,7 @@
 
     {% block content %}{% endblock %}
 
-{% vcms_admin %}
+{% js_admin_layer %}
 
 <div class="row">
     <div class="col-12">

@@ -7,7 +7,6 @@ SECRET_KEY = 'bvhaviahivGbkjsf(jbkjggygsf0983535'
 
 DEBUG = True
 ALLOWED_HOSTS = ['dev.localhost']
-ALLOWED_IPS = ['127.0.0.1', '192.168/16']
 
 DBBACKUP_HOSTNAME = ALLOWED_HOSTS[0]
 #pip install django-storages
@@ -28,8 +27,6 @@ CACHES = {
 
 if DEBUG is True:
     LOCAL_MIDDLEWARE = [
-        'project.middleware.IPCheck',
-        'project.middleware.HostCheck',
     ]
 
     TEMPLATES = [
