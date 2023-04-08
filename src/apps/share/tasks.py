@@ -7,7 +7,7 @@ from datetime import date
 from django.conf import settings
 from vu.image import VuImage
 
-from vcms.share.models import Share, File
+from .models import Share, File
 
 TH_SIZE = settings.VCMS_SHARE_TH_SIZE if hasattr(settings, 'VCMS_SHARE_TH_SIZE') else (260, 260)
 

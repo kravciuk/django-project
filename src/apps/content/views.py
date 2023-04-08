@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.core.files.storage import default_storage
+from django.http import HttpResponseNotFound
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -14,6 +15,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger
 
 from vu.paginator import FlynsarmyPaginator
 from vu.encryption import hash_to_id, id_to_hash
+from vu.iptools import GeoIP
 
 from .forms import PageContentForm
 from .models import Content
@@ -112,7 +114,12 @@ def add_or_edit(request, content_type=None, parent=None):
 
 
 def content_view(request, path='index', *args, **kwargs):
-    instance = get_object_or_404(Content, enabled=True, url=path, language=request.LANGUAGE_CODE)
-    return render(request, "content/%s.html" % instance.template, {
-        'content': instance,
-    })
+    obj = Content.objects.filter(enabled=True, url=path, language=request.LANGUAGE_CODE).first()
+    if obj:
+        return render(request, "content/%s.html" % obj.template, {
+            'content': obj,
+        })
+    else:
+        ip_info = GeoIP(request)
+        log.debug(f"Path {path} not found for IP: {ip_info.ip}, country: {ip_info.country['country_name']}")
+        return HttpResponseNotFound(f'Page /{path}/ not found.')

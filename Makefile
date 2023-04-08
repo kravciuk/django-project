@@ -14,17 +14,14 @@ config:
 	cp etc/supervisor.example.conf etc/supervisor.conf;
 	cp etc/uwsgi.example.ini etc/uwsgi.ini;
 
-requirements:
-	pipenv sync;
-
 pull:
 	git pull;
 
 run:
-	pipenv run python src/manage.py runserver 127.0.0.1:8000;
+	poetry run python src/manage.py runserver 127.0.0.1:8000;
 
-urun:
-	source ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:dev
+http:
+	poetry ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:http
 
 uwsgi:
 	source ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:uwsgi_daemon
@@ -42,38 +39,38 @@ flower:
 	source ./.venv/bin/activate && celery flower -A project --workdir=src --address=127.0.0.1 --port=5555
 
 static:
-	pipenv run python src/manage.py collectstatic --noinput
+	poetry run python src/manage.py collectstatic --noinput
 
 console:
-	pipenv run python src/manage.py ${app} --traceback
+	poetry run python src/manage.py ${app} --traceback
 
 migrate:
-	pipenv run python src/manage.py migrate
+	poetry run python src/manage.py migrate
 
 fakemigrate:
-	pipenv run python src/manage.py migrate --fake ${app}
+	poetry run python src/manage.py migrate --fake ${app}
 
 commit:
-	pipenv run python src/manage.py makemigrations  ${app}
+	poetry run python src/manage.py makemigrations  ${app}
 
 locale:
-	pipenv run python src/manage.py makemessages -a -s --ignore=env/* --ignore=var/* --keep-pot  -v3 --no-location
+	poetry run python src/manage.py makemessages -a -s --ignore=env/* --ignore=var/* --keep-pot  -v3 --no-location
 
 compilemessages:
-	pipenv run python src/manage.py compilemessages
+	poetry run python src/manage.py compilemessages
 
 help:
-	pipenv run python src/manage.py help
+	poetry run python src/manage.py help
 
 # password managment
 passwd:
-	pipenv run python src/manage.py changepassword
+	poetry run python src/manage.py changepassword
 
 adduser:
-	pipenv run python src/manage.py createsuperuser
+	poetry run python src/manage.py createsuperuser
 
 shell:
-	pipenv run python src/manage.py shell
+	poetry run python src/manage.py shell
 
 install:
-	pipenv install --keep-outdated ${app}
+	poetry install --keep-outdated ${app}

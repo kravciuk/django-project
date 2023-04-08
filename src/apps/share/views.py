@@ -95,14 +95,11 @@ def view_snippet(request, short_id, content_type='html'):
 
 @login_required
 def add_or_edit(request, short_id=''):
-    old_id = hash_to_id(short_id, default=0)
+    pk = hash_to_id(short_id, default=0, salt=settings.SECRET_KEY)
+    log.debug(pk)
 
-    res = Share.objects.filter(pk=old_id, user=request.user)[:1]
-    if res:
-        instance = res[0]
-    else:
-        instance = None
-
+    instance = Share.objects.filter(pk=pk, user=request.user).first()
+    log.debug(instance)
     if request.method == 'GET':
         form = AddSnippetForm(instance=instance)
     else:

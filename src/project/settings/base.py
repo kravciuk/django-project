@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'sitetree',
     'ckeditor',
     'ckeditor_uploader',
-    #'embed_video',
 
     # 'vu',
     # 'vu.sendfile',

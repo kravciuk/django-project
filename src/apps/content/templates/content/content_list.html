@@ -10,7 +10,7 @@
         {% for record in records %}
             <div class="row">
                 <div class="post">
-                    <a href="{% url 'content_page' record.url %}" class="blog-post-title">{{ record.title }}</a>
+                    <a href="{% url 'content:page' record.url %}" class="blog-post-title">{{ record.title }}</a>
                     {{ record.short_content|safe }} <br />
                 </div>
             </div>

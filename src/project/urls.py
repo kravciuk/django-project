@@ -14,7 +14,7 @@ from sitetree.sitetreeapp import register_i18n_trees
 from .sitemaps import ProjectSitemap
 from . import views
 
-# handler404 = 'project.views.error404'
+handler404 = 'project.views.error404'
 
 register_i18n_trees(['header_menu'])
 
@@ -44,7 +44,7 @@ urlpatterns += i18n_patterns(
     re_path(r'^share/', include('share.urls')),
 
      # path('example/', include('example.urls', namespace='example')),
-     re_path(r'^', include('content.urls')),
+     path('', include('content.urls')),
 
     prefix_default_language=False
 )
