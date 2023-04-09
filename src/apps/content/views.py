@@ -121,5 +121,5 @@ def content_view(request, path='index', *args, **kwargs):
         })
     else:
         ip_info = GeoIP(request)
-        log.debug(f"Path {path} not found for IP: {ip_info.ip}, country: {ip_info.country['country_name']}")
+        log.debug(f"Path {path} not found for IP: {ip_info.ip_info[0]['ip']}, country: {ip_info.ip_info[0]['geo']['country_name']}")
         return HttpResponseNotFound(f'Page /{path}/ not found.')

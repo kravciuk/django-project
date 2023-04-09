@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <script src="/static/jquery/jquery-2.2.4.min.js"></script>
+	<script src="{% static 'content/js/view-image.min.js' %}"></script>
 {#<script src="/static/admin/js/jquery.init.js"></script>#}
 
 {% render_block "head" %}
@@ -49,7 +50,8 @@
         </form>
     </nav>
 
-    {% block content %}{% endblock %}
+	<div id="content">{% block content %}{% endblock %}</div>
+
 
 {% js_admin_layer %}
 
@@ -62,7 +64,9 @@
 </div>
 
 
-
+<script>
+	window.ViewImage && ViewImage.init('#content img');
+</script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
