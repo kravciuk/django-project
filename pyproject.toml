@@ -5,10 +5,10 @@ description = ""
 authors = ["Vadim Kravciuk"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-Django = "^4.1.7"
+python = "^3.12"
+Django = "^5.0.6"
 django-constance = "^2.9.1"
-django-ckeditor = "^6.5.1"
+django-ckeditor = "^6.7.1"
 django-sitetree = "^1.17.3"
 django-select2 = "^8.1.1"
 django-taggit = "^3.1.0"

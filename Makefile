@@ -74,3 +74,6 @@ shell:
 
 install:
 	poetry install --keep-outdated ${app}
+
+docker:
+	docker run -v $(pwd):/home/ -p 80:8000 django

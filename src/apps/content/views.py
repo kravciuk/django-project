@@ -115,6 +115,7 @@ def add_or_edit(request, content_type=None, parent=None):
 
 def content_view(request, path='index', *args, **kwargs):
     log.info(f"Requested path: {path}:{request.LANGUAGE_CODE}")
+    log.debug(request.META)
     obj = Content.objects.filter(enabled=True, url=path, language=request.LANGUAGE_CODE).first()
     if obj:
         return render(request, "content/%s.html" % obj.template, {

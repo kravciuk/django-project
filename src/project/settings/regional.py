@@ -2,7 +2,8 @@
 __author__ = 'Vadim Kravciuk, vadim@kravciuk.com'
 
 
-LANGUAGE_CODE = 'en'
+PREFIX_DEFAULT_LANGUAGE = False
+LANGUAGE_CODE = 'ru'
 LANGUAGES = [
     ('en', 'English'),
     ('ru', 'Russian'),

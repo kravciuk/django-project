@@ -37,7 +37,8 @@ if 'silk' in settings.INSTALLED_APPS:
     urlpatterns += [re_path(r'^silk/', include('silk.urls', namespace='silk'))]
 
 urlpatterns += i18n_patterns(
-    re_path(r'^$',TemplateView.as_view(template_name='index.html'), name="homepage"),
+    re_path(r'^$',TemplateView.as_view(template_name='index.html'), name="index"),
+    path('local/', TemplateView.as_view(template_name='local.html'), name="local"),
     re_path(r'^sitemap-content/$',TemplateView.as_view(template_name='sitemap.html'), name="sitemap_content_html"),
 
     re_path(r'^i18n/', include('django.conf.urls.i18n')),
@@ -46,7 +47,7 @@ urlpatterns += i18n_patterns(
      # path('example/', include('example.urls', namespace='example')),
      path('', include('content.urls')),
 
-    prefix_default_language=False
+    prefix_default_language=settings.PREFIX_DEFAULT_LANGUAGE
 )
 
 if settings.DEBUG is True:
