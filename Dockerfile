@@ -1,7 +1,7 @@
 # Specifying base image
 FROM python:3.12-bookworm
 
-ENV HOME=/project
+ENV HOME=/code
 
 # Generation of pyc files
 ENV PYTHONDONTWRITEBYTECODE 0
@@ -28,12 +28,13 @@ RUN apt-get update -y && apt-get install -y \
     libproj-dev \
     gettext
 
-# copy project
-COPY . .
 RUN poetry install
+RUN make var
 
-# Running Django on 0.0.0.0:8000
-CMD python3 manage.py runserver 0.0.0.0:8080
+ENTRYPOINT ["poetry", "run", "python", "src/manage.py"]
+CMD ["runserver", "0.0.0.0:8080"]
 
-# Exposing port inside the container
-EXPOSE 8080
+#EXPOSE 8080
+#
+#RUN poetry run src/manage.py runserver 0.0.0.0:8080
+
