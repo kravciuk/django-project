@@ -18,7 +18,7 @@ pull:
 	git pull;
 
 run:
-	poetry run python src/manage.py runserver 127.0.0.1:8000;
+	poetry run python src/manage.py runserver 127.0.0.1:8080;
 
 http:
 	poetry ./.venv/bin/activate && uwsgi --ini etc/uwsgi.ini:http

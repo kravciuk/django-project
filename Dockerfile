@@ -1,5 +1,5 @@
 # Specifying base image
-FROM python:3.12-bookworm
+FROM python:3.12-slim
 
 ENV HOME=/code
 
@@ -26,7 +26,7 @@ RUN apt-get update -y && apt-get install -y \
     python3-gdal \
     binutils \
     libproj-dev \
-    gettext
+    gettext make
 
 RUN poetry install
 RUN make var

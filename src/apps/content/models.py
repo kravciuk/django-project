@@ -17,9 +17,8 @@ from taggit.models import Tag, TaggedItem
 from taggit_autosuggest.managers import TaggableManager
 from treebeard.mp_tree import MP_Node
 
-from vu.encryption import id_to_hash
 from vu.abstract.models import unique_slug
-
+from vu.abstract.models import Base
 
 if hasattr(settings, 'VCMS_POST_CUTTER'):
     cutter = settings.VCMS_POST_CUTTER
@@ -55,7 +54,7 @@ def get_upload_path(instance, filename):
     return instance.get_upload_path(filename)
 
 
-class Category(models.Model):
+class Category(Base):
     name = models.CharField(_(u'Name'), max_length=100, default='')
     slug = models.SlugField(verbose_name=_(u'Slug'), max_length=100)
     meta_keywords = models.CharField(_(u'Meta keywords'), max_length=255, default='', blank=True)
@@ -72,7 +71,7 @@ class Category(models.Model):
         return self.name
 
 
-class Content(MP_Node):
+class Content(MP_Node, Base):
     HASH_LENGTH = 8
     TYPE_PAGE = 'page'
     TYPE_GALLERY = 'gallery'
@@ -116,10 +115,6 @@ class Content(MP_Node):
 
     def allow_comment(self):
         return self.comments
-
-    @property
-    def hash(self):
-        return id_to_hash(self.id, length=self.HASH_LENGTH)
 
     @property
     def parent(self):

@@ -15,8 +15,6 @@ from content.models import Content
 from share.models import Share
 from comments.models import Comment
 
-from vu.encryption import encrypt
-
 register = template.Library()
 
 from logging import getLogger

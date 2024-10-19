@@ -18,6 +18,7 @@ ALLOWED_HOSTS = ['localhost']
 ALLOWED_IPS = ['127.0.0.1', '192.168/16']
 
 INSTALLED_APPS = (
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,6 +85,8 @@ MEDIA_URL = '/media/'
 ADMIN_LOCATION_URL = 'admin'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+ASGI_APPLICATION = "project.asgi.application"
 
 from .logging import *
 from .database import *

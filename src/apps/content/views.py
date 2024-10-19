@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import EmptyPage, PageNotAnInteger
 
 from vu.paginator import FlynsarmyPaginator
-from vu.encryption import hash_to_id, id_to_hash
 from vu.iptools import GeoIP
 
 from .forms import PageContentForm

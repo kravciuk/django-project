@@ -9,13 +9,11 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
-from django.utils.text import slugify
-from django.dispatch import receiver
 from taggit_autosuggest.managers import TaggableManager
-from markdown import markdown
 from hashids import Hashids
 from vu.abstract.models import UniqueFileField
-# from embed_video.backends import detect_backend
+
+from vu.abstract.models import Base
 
 import logging
 log = logging.getLogger(__name__)
@@ -42,7 +40,7 @@ class Pygment(models.Model):
         return self.name
 
 
-class Share(models.Model):
+class Share(Base):
 
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     tags = TaggableManager(_(u'Tags'), blank=True)
@@ -60,8 +58,6 @@ class Share(models.Model):
 
     expired_on = models.DateField(_(u'Expired on'), blank=True, null=True)
     view_count = models.IntegerField(default=0, editable=False)
-    time_created = models.DateTimeField(auto_now_add=True, editable=False)
-    time_updated = models.DateTimeField(auto_now=True, editable=False)
     time_delete = models.DateField(default=None, blank=True, null=True)
 
     # def rm_files(self):
@@ -186,7 +182,7 @@ class Share(models.Model):
         return self.title
 
 
-class File(models.Model):
+class File(Base):
     TYPE_IMAGE = 'image'
 
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
@@ -198,8 +194,6 @@ class File(models.Model):
     processed = models.BooleanField(_(u'Processed'), default=False)
     comment = models.TextField(_(u'Comments'), blank=True, null=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, db_index=True)
 
     def __str__(self):

@@ -52,3 +52,8 @@ urlpatterns += i18n_patterns(
 
 if settings.DEBUG is True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + staticfiles_urlpatterns()
+
+
+websocket_urlpatterns = [
+    # re_path(r"ws/game/$", consumers.MultiplayerConsumer.as_asgi()),
+]

@@ -11,19 +11,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponsePermanentRedirect, HttpResponseNotFound, HttpResponseForbidden
 from django.core.paginator import EmptyPage, PageNotAnInteger
 from django.utils.text import slugify
-from imagekit import ImageSpec
-from pilkit.processors import ResizeToFit
 
 from .forms import AddSnippetForm
 from .models import Share, SHARE_PROTECTED_DIR, SHARE_UPLOADED_DIR, File
 
-from vu.sendfile import sendfile
-from vu.encryption import encrypt, decrypt, hash_to_id
 from vu.paginator import FlynsarmyPaginator
-
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import HtmlFormatter
 
 import logging
 log = logging.getLogger(__name__)
@@ -234,8 +226,3 @@ def index(request, owner=False):
                                                 'shares': shares,
                                                 'host': request.META['HTTP_HOST']})
 
-
-class Thumbnail(ImageSpec):
-    processors = [ResizeToFit(settings.VCMS_SHARE_THUMBNAIL_WEIGHT, settings.VCMS_SHARE_THUMBNAIL_HEIGHT, False)]
-    format = 'JPEG'
-    options = {'quality': 80}
